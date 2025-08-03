@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[image-url.png](https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_logo.jpg)" width="300">
+  <img src="https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_logo.jpg" width="300">
 </p>
 
 ![RegChat_Overview](https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_overview.png)
