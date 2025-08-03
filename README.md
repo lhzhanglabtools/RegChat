@@ -1,4 +1,8 @@
-# ![RegChat](https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_logo.jpg)
+<p align="center">
+  < img width="200"  src="(https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_logo.jpg)">
+</p >
+
+
 ![RegChat_Overview](https://github.com/lhzhanglabtools/RegChat/blob/main/RegChat_overview.png)
 
 ## Overview
