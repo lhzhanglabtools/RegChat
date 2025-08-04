@@ -60,10 +60,10 @@ pip install RegChat==0.0.7
 
 Seven step-by-step tutorials are included in the `Tutorial` folder.
 - [Building RegChatDB](https://github.com/lhzhanglabtools/csRegChatDB)
-- [Tutorial 1: Running RegChat on simulation data](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_simulation_data.ipynb)
-- [Tutorial 2: Running RegChat on single cell ISSAAC-seq multi-omics data of mouse cortex slices](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_ISSAACseq_data.ipynb)
-- [Tutorial 3: Running RegChat on spatial transcriptomics of psoriasis skin brain](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_psoriasis_data.ipynb)
-- [Tutorial 4: Running RegChat on spatial MISAR-seq multi-omics data of mouse embryonic brain skin](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_MISARseq_data.ipynb)
+- [Tutorial 1: Running RegChat on simulation data](https://github.com/lhzhanglabtools/RegChat/blob/main/Tutorial/run_RegChat_on_simulation_data.ipynb)
+- [Tutorial 2: Running RegChat on single cell ISSAAC-seq multi-omics data of mouse cortex slices](https://github.com/lhzhanglabtools/RegChat/blob/main/Tutorial/run_RegChat_on_ISSAACseq_data.ipynb)
+- [Tutorial 3: Running RegChat on spatial transcriptomics of psoriasis skin brain](https://github.com/lhzhanglabtools/RegChat/blob/main/Tutorial/run_RegChat_on_psoriasis_data.ipynb)
+- [Tutorial 4: Running RegChat on spatial MISAR-seq multi-omics data of mouse embryonic brain skin](https://github.com/lhzhanglabtools/RegChat/blob/main/Tutorial/run_RegChat_on_MISARseq_data.ipynb)
 
 ## Support
 
