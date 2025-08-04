@@ -8,6 +8,7 @@ import numpy as np
 import scanpy as sc
 import pandas as pd
 import torch.nn as nn
+import datetime
 from scipy import sparse
 import torch.optim as optim
 import torch.nn.functional as F
@@ -17,7 +18,7 @@ from torch.nn.modules.module import Module
 from typing import List, Optional, Union, Any
 from collections import OrderedDict
 
-from .utils import get_lr_data, get_average_lr,get_cell_type_pairs,get_nich_score,get_neig_index,get_cell_positive_pairs,get_regchat_result_LR,get_regchat_result_LRFG,get_regchat_result_LG, get_regchat_result_LR_inter, get_LGs,compute_C,compute_C_fast, z_score_2d,permutation_adj,permutation_adj_full
+from .utils import get_lr_data, get_average_lr,get_cell_type_pairs,get_nich_score,get_neig_index,get_cell_positive_pairs,get_regchat_result_LR,get_regchat_result_LRFG,get_regchat_result_LG, get_regchat_result_LR_inter, get_LGs,get_lr_data_no_tfg,compute_C,compute_C_fast, z_score_2d,permutation_adj,permutation_adj_full
 
 
 class Discriminator_inter(nn.Module):
@@ -663,7 +664,7 @@ def Train_CCC_model_no_intra(adata_rna, links_database, gene_cell_pd, spot_loc, 
         cost = loss_c+loss_con
         train_loss_list.append(cost)
         if (epoch % 10 == 0) and (len(train_loss_list) >= 2):
-            print( str(epoch) + " cost: " + str(cost.data.cpu()) + " " + "relative decrease ratio: "+ str(abs(train_loss_list[-1] - train_loss_list[-2]) / train_loss_list[-2]).data.cpu())
+            print( str(epoch) + " cost: " + str(cost.data.cpu().numpy()) + " " + "relative decrease ratio: "+ str(abs(train_loss_list[-1] - train_loss_list[-2]).data.cpu().numpy() / train_loss_list[-2].data.cpu().numpy()))
 
         if epoch > sub_epochs:
             # permute
@@ -819,7 +820,7 @@ def Train_CCC_model(adata_rna, links_database, gene_cell_pd, spot_loc, hidden_di
         train_loss_list.append(cost)
 
         if (epoch % 10 == 0) and (len(train_loss_list) >= 2):
-            print( str(epoch) + " cost: " + str(cost.data.cpu()) + " " + "relative decrease ratio: "+ str(abs(train_loss_list[-1] - train_loss_list[-2]) / train_loss_list[-2]).data.cpu())
+            print( str(epoch) + " cost: " + str(cost.data.cpu().numpy()) + " " + "relative decrease ratio: "+ str(abs(train_loss_list[-1] - train_loss_list[-2]).data.cpu().numpy() / train_loss_list[-2].data.cpu().numpy()))
 
         if epoch > sub_epochs:
             # permute
@@ -840,7 +841,7 @@ def Train_CCC_model(adata_rna, links_database, gene_cell_pd, spot_loc, hidden_di
                 if mode == 'discriminator':
                     LRFG_score_pd_per,_,_,_ = model.get_metapath_score(nei_adj, spots_ligand_permut, spots_recep_permut, spots_tfg_l_permut, LRP_name, tfg_l, links_database)
                     LRFG_combined_list.append(LRFG_score_pd_per.values)
-                    LG_score_pd_per = get_LGs(signaling_pathway, LRFG_score_pd_per)
+                    LG_score_pd_per = get_LGs(links_database, LRFG_score_pd_per)
                     LG_combined_list.append(LG_score_pd_per.values)
                     del LRFG_score_pd_per, LG_score_pd_per
                     if per_num_cut is not None:
@@ -865,7 +866,7 @@ def Train_CCC_model(adata_rna, links_database, gene_cell_pd, spot_loc, hidden_di
     LRFG_score_pd.index = cellName.tolist()
     LRF_score_pd.index = cellName.tolist()
     CCI_score_pd = pd.DataFrame(data=CCI_activity.data.cpu().numpy(), index = cellName.tolist(), columns = LRP_name)
-    LG_score_pd = get_LGs(signaling_pathway, LRFG_score_pd)
+    LG_score_pd = get_LGs(links_database, LRFG_score_pd)
     if len(CCI_combined_list) > 1:
         print(len(CCI_combined_list))
         CCI_combined_all = torch.cat(CCI_combined_list, dim=0)    
