@@ -52,14 +52,14 @@ python setup.py install
 OR
 
 ```
-pip install RegChat
+pip install RegChat==0.0.7
 ```
 
 
 ## Tutorials
 
 Seven step-by-step tutorials are included in the `Tutorial` folder.
-
+- [Building RegChatDB]()
 - [Tutorial 1: Running RegChat on simulation data](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_simulation_data.ipynb)
 - [Tutorial 2: Running RegChat on single cell ISSAAC-seq multi-omics data of mouse cortex slices](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_ISSAACseq_data.ipynb)
 - [Tutorial 3: Running RegChat on spatial transcriptomics of psoriasis skin brain](https://github.com/lhzhanglabtools/RegChat/blob/main/tutorials/run_RegChat_on_psoriasis_data.ipynb)
